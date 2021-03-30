@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Footer = () => {
 	return (
 		<div className="bg-primary mx-auto py-8 display-block ">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -30,4 +30,4 @@ const Header = () => {
 		</div>
 	);
 };
-export default Header;
+export default Footer;
