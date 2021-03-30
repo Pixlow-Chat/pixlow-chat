@@ -1,10 +1,8 @@
 @tailwind base;
 @tailwind components;
 
-@font-face {
-	font-family: "PressStart2P";
-	src: local("PressStart2P"),
-		url(../assets//fonts//PressStart2P-Regular.ttf) format("ttf");
-}
-
 @tailwind utilities;
+
+.PressStart2Play {
+	font-family: "Press+Start+Play", sans-serif;
+}
