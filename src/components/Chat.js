@@ -9,20 +9,20 @@ const Chat = (props) => {
   const socketRef = useRef();
 
   useEffect(() => {
-    socketRef.current = io.connect('/');
+    socketRef.current = io.connect("/");
 
-    socketRef.current.on("your id", id => {
+    socketRef.current.on("your id", (id) => {
       setYourID(id);
-    })
+    });
 
     socketRef.current.on("message", (message) => {
       console.log("here");
       receivedMessage(message);
-    })
+    });
   }, []);
 
   function receivedMessage(message) {
-    setMessages(oldMsgs => [...oldMsgs, message]);
+    setMessages((oldMsgs) => [...oldMsgs, message]);
   }
 
   function sendMessage(e) {
@@ -45,13 +45,13 @@ const Chat = (props) => {
         {messages.map((message, index) => {
           if (message.id == yourID) {
             return (
-              <div style={{backgroundColor: '#FF000020'}} key={index}>
+              <div style={{ backgroundColor: "#FF000020" }} key={index}>
                 <p>Me: {message.body}</p>
               </div>
             );
           } else {
             return (
-              <div style={{backgroundColor: '#00FF0020'}} key={index}>
+              <div style={{ backgroundColor: "#00FF0020" }} key={index}>
                 <p>Other person: {message.body}</p>
               </div>
             );
@@ -59,7 +59,11 @@ const Chat = (props) => {
         })}
       </div>
       <form onSubmit={sendMessage}>
-        <textarea value={message} onChange={handleChange} placeholder={"Say something..."}></textarea>
+        <textarea
+          value={message}
+          onChange={handleChange}
+          placeholder={"Say something..."}
+        ></textarea>
         <button>Send</button>
       </form>
     </div>
