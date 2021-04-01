@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "../components";
+import make_room from "../assets/img/make_room.png";
+import link from "../assets/img/link.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
 import box from "../assets/img/box.png";
 
@@ -42,26 +44,29 @@ const LandingPage = () => {
 				</div>
 				<div className="mx-auto justify-center md:flex md:flex-row md:flex-wrap w-full">
 					<div classNam="w-1/3">
-						<img src={chat_bubble} className="w-1/3 mx-auto" />
+						<img src={make_room} className="w-1/3 mx-auto" />
 						<div className="mx-auto px-12 w-1/2 text-center">
+							<br></br>
 							<p className="PressStart2Play text-white">
-								This is a text box explaining something
+								Create<br></br>Room
+							</p>
+						</div>
+					</div>
+					<div classNam="w-1/3">
+						<img src={link} className="w-1/3 mx-auto" />
+						<div className="mx-auto px-12 w-1/2 text-center">
+							<br></br>
+							<p className="PressStart2Play text-white">
+								Share<br></br>Link
 							</p>
 						</div>
 					</div>
 					<div classNam="w-1/3">
 						<img src={chat_bubble} className="w-1/3 mx-auto" />
 						<div className="mx-auto px-12 w-1/2 text-center">
+							<br></br>
 							<p className="PressStart2Play text-white">
-								This is a text box explaining something
-							</p>
-						</div>
-					</div>
-					<div classNam="w-1/3">
-						<img src={chat_bubble} className="w-1/3 mx-auto" />
-						<div className="mx-auto px-12 w-1/2 text-center">
-							<p className="PressStart2Play text-white">
-								This is a text box explaining something
+								Chat<br></br>Away
 							</p>
 						</div>
 					</div>
