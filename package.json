@@ -1,4 +1,5 @@
 {
+	"homepage": "http://tyler-seliber.github.io/pixlow-chat",
 	"name": "pixlow-chat",
 	"version": "0.1.0",
 	"private": true,
@@ -16,6 +17,8 @@
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
 		"build:css": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
 		"start": "craco start",
 		"build": "craco build",
@@ -43,6 +46,7 @@
 	"devDependencies": {
 		"@tailwindcss/postcss7-compat": "^2.0.4",
 		"autoprefixer": "^9.8.6",
+		"gh-pages": "^3.1.0",
 		"postcss": "^7.0.35",
 		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
 	}
