@@ -41,7 +41,7 @@ const Chat = (props) => {
 
 	return (
 		<div>
-			<div>
+			<div className="overflow-y-hidden">
 				{messages.map((message, index) => {
 					if (message.id == yourID) {
 						return (
@@ -52,7 +52,7 @@ const Chat = (props) => {
 							>
 								{<p class="text-white PressStart2Play text-lg   pb-2">Me</p>}
 								{
-									<p class="text-white PressStart2Play text-md  ">
+									<p class="text-white PressStart2Play text-md ">
 										{message.body}
 									</p>
 								}
@@ -67,7 +67,7 @@ const Chat = (props) => {
 							>
 								{
 									<p class="text-white PressStart2Play text-lg   pb-2">
-										Other Person
+										Tyler:
 									</p>
 								}
 								{
@@ -88,8 +88,8 @@ const Chat = (props) => {
 						placeholder={"Say something..."}
 						class="flex-1 border-3"
 					></textarea>
-					<button className="bg-accent my-auto ">
-						<text className="text-white px-6 py-6 text-xl PressStart2Play">
+					<button className="bg-primary">
+						<text className="text-white px-6 py-10 text-xl PressStart2Play">
 							Send
 						</text>
 					</button>
