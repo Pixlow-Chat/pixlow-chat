@@ -1,3 +1,4 @@
 import Chat from "./Chat";
 import Header from "./header";
-export { Chat, Header };
+import ChatHeader from "./ChatHeader";
+export { Chat, Header, ChatHeader };

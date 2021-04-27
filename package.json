@@ -1,9 +1,9 @@
 {
-	"homepage": "http://tyler-seliber.github.io/pixlow-chat",
+	"homepage": "http://tyler-seliber.github.io/",
 	"name": "pixlow-chat",
 	"version": "0.1.0",
 	"private": true,
-	"proxy": "http://localhost:3000",
+	"proxy": "https://pixlow-chat.herokuapp.com",
 	"dependencies": {
 		"@craco/craco": "^6.1.1",
 		"@testing-library/jest-dom": "^5.11.4",
