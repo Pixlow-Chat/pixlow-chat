@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Chat, ChatHeader } from "../components";
 import ChatAttendee from "../components/ChatAttendee.js";
 import link from "../assets/img/link.png";
-// comment
 
 const ChatPage = () => {
 	return (
