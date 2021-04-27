@@ -22,7 +22,7 @@
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
 		"build:css": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
-		"start": "(node server/index.js) & (craco start)",
+		"start": "(npm install) & (cd server && npm install) & (cd ..) & (node server/index.js) & (craco start)",
 		"build": "craco build",
 		"test": "craco test",
 		"eject": "react-scripts eject"
