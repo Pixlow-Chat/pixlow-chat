@@ -75,6 +75,7 @@ const LandingPage = () => {
 					</div>
 				</div>
 			</div>
+			<Chat></Chat>
 		</div>
 	);
 };
