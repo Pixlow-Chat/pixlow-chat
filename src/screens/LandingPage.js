@@ -7,8 +7,14 @@ import link from "../assets/img/link.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
 import box from "../assets/img/box.png";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
 	// const [attendees, setAttendees] = useState({ name: "test" });
+
+	const [roomCode, setRoomCode] = useState("");
+	const handleSubmit = (evt) => {
+		evt.preventDefault();
+		alert(`Joining  Room: ${roomCode}`);
+	};
 	return (
 		<div>
 			<Header />
@@ -26,15 +32,33 @@ const LandingPage = () => {
 					</div>
 					<div className="w-full md:w-6/12  sm:px-2 md:px-10 px-24">
 						<div className="md:float-right center">
-							<Link to="/chat" class="bg-accent py-3 px-5 mb-6">
-								<h3 className="text-center text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+							<Link to="/chat" class=" ">
+								<h3 className="text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
 									Make Room
 								</h3>
 							</Link>
 
-							<h3 className="text-center text-white text-lg md:text-xl lg:text-2xl xl:text-3xl PressStart2Play">
-								Join Room
-							</h3>
+							<form onSubmit={handleSubmit} className="px-12">
+								<label>
+									<h3 className="text-center text-white text-md md:text-lg lg:text-xl xl:text-2xl PressStart2Play">
+										Join Room
+									</h3>
+								</label>
+								<div className="flex flex-row flex-nowrap flex-1">
+									<input
+										className="flex-1 px-6 py-4 PressStart2Play"
+										type="text"
+										value={roomCode}
+										onChange={(e) => setRoomCode(e.target.value)}
+									/>
+
+									<input
+										type="submit"
+										value="Join!"
+										className="flex-shrink bg-accent-light px-6 py-4 PressStart2Play"
+									/>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
