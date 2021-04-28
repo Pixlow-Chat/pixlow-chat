@@ -3,21 +3,27 @@ import { Link } from "react-router-dom";
 import { Chat, ChatHeader } from "../components";
 import ChatAttendee from "../components/ChatAttendee.js";
 import link from "../assets/img/link.png";
+import edit from "../assets/img/edit_no_background.png";
 
 const ChatPage = () => {
+	const [attendees, setAttendees] = useState([
+		{ icon: link, name: "Me" },
+		{ icon: link, name: "Tyler" },
+	]);
+	const [roomName, setRoomName] = useState("");
+	const [tempRoomName, setTempRoomName] = useState("");
+	const [formHidden, setFormHidden] = useState(false);
+
+	const handleSubmit = () => {};
 	return (
 		<div className="h-screen w-screen overscroll-none">
 			<div id="chat-section" className="h-screen w-screen overscroll-none">
 				<div className="bg-primary mx-auto py-8 display-block ">
-					<div className="max-w-7xl mx-auto px-4 sm:px-6">
-						<div className="flex justify-between items-center">
-							<div className="flex justify-start">
-								<button className="over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-									<span className="text-white text-xl PressStart2Play">
-										Room Name
-									</span>
-								</button>
-							</div>
+					<div className="flex justify-between items-center">
+						<div className="flex flex-row flex-nowrap justify-start">
+							<p className="text-white text-xl PressStart2Play pl-24">
+								{roomName}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -30,22 +36,63 @@ const ChatPage = () => {
 						</div>
 						<div className="bg-accent pl-4 py-6 flex-1">
 							<div>
-								<div className="flex flex-row flex-nowrap justify-center">
-									<Link to="/" class=" ">
+								<div className="flex flex-col flex-nowrap align-start justify-start">
+									<div className="flex flex-row flex-nowrap justify-start">
+										<Link to="/" class=" ">
+											<button
+												className="bg-primary-dark py-3 px-5 mx-1 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+												onPress={[]}
+											>
+												<span className="text-white text-xs PressStart2Play ">
+													Leave Room
+												</span>
+											</button>
+										</Link>
 										<button
-											className="bg-primary-dark py-3 px-5 mx-2 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-											onPress={[]}
+											onClick={() => setFormHidden(!formHidden)}
+											className="bg-accent-light py-3 px-5 mx-1 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 										>
 											<span className="text-white text-xs PressStart2Play ">
-												Leave Room
+												Rename Room
 											</span>
 										</button>
-									</Link>
-									<button className="bg-accent-light py-3 px-5  mx-2 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-										<span className="text-white text-xs PressStart2Play ">
-											Copy Link
-										</span>
+									</div>
+									<button
+										className="bg-white w-full py-3 mx-2 my-2 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+										onPress={[]}
+									>
+										<span className="text-xs PressStart2Play ">Copy Link</span>
 									</button>
+									{formHidden && (
+										<form
+											onSubmit={() => {
+												setRoomName(tempRoomName);
+												setFormHidden(!formHidden);
+												setTempRoomName("");
+											}}
+											className=" pt-6"
+										>
+											<label>
+												<h3 className="text-center text-white text-xs PressStart2Play">
+													Enter a new room name
+												</h3>
+											</label>
+											<div className="flex flex-row flex-nowrap flex-1">
+												<input
+													className="flex-1 px-4 py-2 text-xs PressStart2Play"
+													type="text"
+													value={tempRoomName}
+													onChange={(e) => setTempRoomName(e.target.value)}
+												/>
+
+												<input
+													type="submit"
+													value="Save"
+													className="flex-shrink bg-accent-light px-6 py-4 PressStart2Play text-xs"
+												/>
+											</div>
+										</form>
+									)}
 								</div>
 								<br />
 								<div className="bg-white h-1 w-full mx-auto justify-self-center"></div>

@@ -38,7 +38,7 @@ const LandingPage = (props) => {
 								</h3>
 							</Link>
 
-							<form onSubmit={handleSubmit} className="px-12">
+							<form onSubmit={handleSubmit} className="px-12 pt-12">
 								<label>
 									<h3 className="text-center text-white text-md md:text-lg lg:text-xl xl:text-2xl PressStart2Play">
 										Join Room
