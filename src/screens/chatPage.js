@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Chat, ChatHeader } from "../components";
 import ChatAttendee from "../components/ChatAttendee.js";
+import ChatAttendeeYou from "../components/ChatAttendeeYou.js";
 import link from "../assets/img/link.png";
 import edit from "../assets/img/edit_no_background.png";
 
@@ -36,7 +37,7 @@ const ChatPage = () => {
 						</div>
 						<div className="bg-accent pl-4 py-6 flex-1">
 							<div>
-								<div className="flex flex-col flex-nowrap align-start justify-start">
+								<div className="flex flex-col flex-nowrap align-start justify-start border-b-2 border-white py-4">
 									<div className="flex flex-row flex-nowrap justify-start">
 										<Link to="/" class=" ">
 											<button
@@ -66,11 +67,15 @@ const ChatPage = () => {
 									{formHidden && (
 										<form
 											onSubmit={() => {
-												setRoomName(tempRoomName);
-												setFormHidden(!formHidden);
-												setTempRoomName("");
+												if (tempRoomName !== "") {
+													setRoomName(tempRoomName);
+													setFormHidden(!formHidden);
+													setTempRoomName("");
+												} else {
+													setFormHidden(!formHidden);
+												}
 											}}
-											className=" pt-6"
+											className=" py-2"
 										>
 											<label>
 												<h3 className="text-center text-white text-xs PressStart2Play">
@@ -94,14 +99,13 @@ const ChatPage = () => {
 										</form>
 									)}
 								</div>
-								<br />
-								<div className="bg-white h-1 w-full mx-auto justify-self-center"></div>
-								<text className="text-center text-white PressStart2Play mt-4">
+
+								<text className="text-center text-white PressStart2Play mt-4 py-3">
 									Room Attendees
 								</text>
 								<div className="flex flex-col flex-nowrap overflow-y-scroll flex-1 justify-start">
-									<ChatAttendee icon={link} name={"Me"} />
-									<ChatAttendee icon={link} name={"Tyler"} />
+									<ChatAttendeeYou icon={link} name={"Me"} role={"host"} />
+									<ChatAttendee icon={link} name={"Tyler"} role={"member"} />
 								</div>
 							</div>
 						</div>

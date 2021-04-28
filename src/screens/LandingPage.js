@@ -6,7 +6,7 @@ import make_room from "../assets/img/make_room.png";
 import link from "../assets/img/link.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
 import box from "../assets/img/box.png";
-
+import background from "../assets/landing_page_background.png";
 const LandingPage = (props) => {
 	// const [attendees, setAttendees] = useState({ name: "test" });
 
@@ -16,51 +16,59 @@ const LandingPage = (props) => {
 		alert(`Joining  Room: ${roomCode}`);
 	};
 	return (
-		<div>
+		<div className="w-full overscroll-none">
 			<Header />
-			<div className="bg-black py-64 px-12 object-center mx-auto">
-				<div className="flex flex-row-reverse flex-wrap md:mr-36">
-					<div className="w-full md:w-6/12 sm:px-2 md:px-10 px-24">
-						<div className="md:float-left center">
-							<h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl md:text-left text-center text-white PressStart2Play">
-								PixlowChat
-							</h1>
-							<h4 className="text-sm md:text-md lg:text-lg xl:text-xl md:text-left text-center text-white PressStart2Play">
-								A Simple Chat Room
-							</h4>
+			<div
+				className="py-6 px-2 md:py-24 md:px-12 object-center mx-auto md:py-64"
+				style={{
+					backgroundImage: `url(${background})`,
+					backgroundSize: "auto",
+					backgroundPosition: "top",
+				}}
+			>
+				<div className="flex flex-col flex-wrap bg-primary py-12 mx-2 md:mx-auto  ">
+					<div className="flex flex-col flex-nowrap justify-center mx-auto md:flex-row">
+						<div className=" md:w-6/12 sm:px-2 md:px-10 ">
+							<div className="md:float-left center py-6">
+								<h1 className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl md:text-left text-center text-white PressStart2Play">
+									PixlowChat
+								</h1>
+								<h4 className="text-sm md:text-sm lg:text-md xl:text-xl md:text-left text-center text-white PressStart2Play">
+									A Simple Chat Room
+								</h4>
+							</div>
 						</div>
-					</div>
-					<div className="w-full md:w-6/12  sm:px-2 md:px-10 px-24">
-						<div className="md:float-right center">
-							<Link to="/chat" class=" ">
-								<h3 className="text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
-									Make Room
-								</h3>
-							</Link>
-
-							<form onSubmit={handleSubmit} className="px-12 pt-12">
-								<label>
-									<h3 className="text-center text-white text-md md:text-lg lg:text-xl xl:text-2xl PressStart2Play">
-										Join Room
+						<div className=" md:w-6/12  sm:px-2 md:px-10 px-24 mx-auto">
+							<div className="md:float-right center">
+								<Link to="/chat" class=" ">
+									<h3 className="text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+										Make Room
 									</h3>
-								</label>
-								<div className="flex flex-row flex-nowrap flex-1">
-									<input
-										className="flex-1 px-6 py-4 PressStart2Play"
-										type="text"
-										value={roomCode}
-										onChange={(e) => setRoomCode(e.target.value)}
-									/>
-
-									<input
-										type="submit"
-										value="Join!"
-										className="flex-shrink bg-accent-light px-6 py-4 PressStart2Play"
-									/>
-								</div>
-							</form>
+								</Link>
+							</div>
 						</div>
 					</div>
+					<form onSubmit={handleSubmit} className="px-12 pt-12 mx-auto">
+						<label>
+							<h3 className="text-center text-white text-md md:text-lg lg:text-xl xl:text-2xl PressStart2Play">
+								Join Room
+							</h3>
+						</label>
+						<div className="flex flex-col flex-nowrap flex-1 md:flex-row">
+							<input
+								className="w-4/5 mx-auto md:w-auto md:flex-1 px-2 py-2 PressStart2Play my-2 md:py-4 md:mx-0"
+								type="text"
+								value={roomCode}
+								onChange={(e) => setRoomCode(e.target.value)}
+							/>
+
+							<input
+								type="submit"
+								value="Join!"
+								className="w-4/5 mx-auto flex-shrink bg-black px-6 py-4 PressStart2Play text-white my-2"
+							/>
+						</div>
+					</form>
 				</div>
 			</div>
 			<div className="bg-gray py-48 px-12 mx-auto">
@@ -99,6 +107,9 @@ const LandingPage = (props) => {
 					</div>
 				</div>
 			</div>
+			<a href="https://www.freepik.com/vectors/shapes">
+				Shapes vector created by starline - www.freepik.com
+			</a>
 		</div>
 	);
 };
