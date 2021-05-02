@@ -7,13 +7,15 @@ import link from "../assets/img/link.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
 import box from "../assets/img/box.png";
 import background from "../assets/landing_page_background.png";
+import {socketRef} from "../context/socket"
 const LandingPage = (props) => {
 	// const [attendees, setAttendees] = useState({ name: "test" });
 
-	const [roomCode, setRoomCode] = useState("");
-	const handleSubmit = (evt) => {
-		evt.preventDefault();
-		alert(`Joining  Room: ${roomCode}`);
+	// const [roomCode, setRoomCode] = useState("");
+	const handleSubmit = (room) => {
+		// evt.preventDefault();
+		alert(`Joining Room ${room}`);
+		props.history.push(`/chat${room}`)
 	};
 	return (
 		<div className="w-full overscroll-none">
@@ -48,14 +50,14 @@ const LandingPage = (props) => {
 							</div>
 						</div>
 					</div>
-					<form onSubmit={handleSubmit} className="px-12 pt-12 mx-auto">
+					<form className="px-12 pt-12 mx-auto">
 						<label>
 							<h3 className="text-center text-white text-md md:text-lg lg:text-xl xl:text-2xl PressStart2Play">
 								Join Room
 							</h3>
 						</label>
 						<div className="flex flex-col flex-nowrap flex-1 md:flex-row">
-							<input
+							{/* <input
 								className="w-4/5 mx-auto md:w-auto md:flex-1 px-2 py-2 PressStart2Play my-2 md:py-4 md:mx-0"
 								type="text"
 								value={roomCode}
@@ -66,7 +68,17 @@ const LandingPage = (props) => {
 								type="submit"
 								value="Join!"
 								className="w-4/5 mx-auto flex-shrink bg-black px-6 py-4 PressStart2Play text-white my-2"
-							/>
+							/> */}
+							<button onClick={()=>handleSubmit("A")}>
+								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+									A
+								</h3>
+							</button>
+							<button onClick={()=>handleSubmit("B")}>
+								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+									B
+								</h3>
+							</button>
 						</div>
 					</form>
 				</div>

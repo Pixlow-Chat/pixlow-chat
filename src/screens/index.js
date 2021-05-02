@@ -1,4 +1,5 @@
 import LandingPage from "./LandingPage";
-import ChatPage from "./ChatPage";
+import ChatPageA from "./ChatPageA";
+import ChatPageB from "./ChatPageB";
 export { LandingPage };
-export { ChatPage };
+export { ChatPageA, ChatPageB };

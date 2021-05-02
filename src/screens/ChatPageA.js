@@ -5,15 +5,17 @@ import ChatAttendee from "../components/ChatAttendee.js";
 import ChatAttendeeYou from "../components/ChatAttendeeYou.js";
 import link from "../assets/img/link.png";
 import edit from "../assets/img/edit_no_background.png";
-
-const ChatPage = () => {
+import {socketRef} from "../context/socket"
+const ChatPageA = (props) => {
+	const roomID = "A"
 	const [attendees, setAttendees] = useState([
 		{ icon: link, name: "Me" },
 		{ icon: link, name: "Tyler" },
 	]);
-	const [roomName, setRoomName] = useState("");
+	// Room ID
+	const [roomName, setRoomName] = useState(`Room ${roomID}`);
 	const [tempRoomName, setTempRoomName] = useState("");
-	const [formHidden, setFormHidden] = useState(false);
+	const [formHidden, setFormHidden] = useState(false);	
 
 	const handleSubmit = () => {};
 	return (
@@ -32,23 +34,25 @@ const ChatPage = () => {
 					<div className=" w-full h-full  flex flex-row flex-nowrap">
 						<div className="h-full w-4/5">
 							<div className="h-full flex flex-col flex-nowrap justify-end">
-								<Chat></Chat>
+								{/* Room ID */}
+								<Chat roomID={roomID}></Chat>
 							</div>
 						</div>
 						<div className="bg-accent pl-4 py-6 flex-1">
 							<div>
 								<div className="flex flex-col flex-nowrap align-start justify-start border-b-2 border-white py-4">
 									<div className="flex flex-row flex-nowrap justify-start">
-										<Link to="/" class=" ">
+									
 											<button
 												className="bg-primary-dark py-3 px-5 mx-1 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-												onPress={[]}
+												// Room ID 
+												onClick={() => {socketRef.emit("leave room", {roomID}); props.history.push("/")}}
 											>
 												<span className="text-white text-xs PressStart2Play ">
 													Leave Room
 												</span>
 											</button>
-										</Link>
+										
 										<button
 											onClick={() => setFormHidden(!formHidden)}
 											className="bg-accent-light py-3 px-5 mx-1 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -58,12 +62,12 @@ const ChatPage = () => {
 											</span>
 										</button>
 									</div>
-									<button
+									{/* <button
 										className="bg-white w-full py-3 mx-2 my-2 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 										onPress={[]}
 									>
 										<span className="text-xs PressStart2Play ">Copy Link</span>
-									</button>
+									</button> */}
 									{formHidden && (
 										<form
 											onSubmit={() => {
@@ -118,4 +122,4 @@ const ChatPage = () => {
 		</div>
 	);
 };
-export default ChatPage;
+export default ChatPageA;

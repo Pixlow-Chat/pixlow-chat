@@ -7,6 +7,8 @@ import make_room from "../assets/img/make_room.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
 import rocket from "../assets/img/userIcons/rocket.png";
 
+import { socketRef } from "../context/socket";
+
 const ChatAttendeeYou = (props) => {
 	const [renameHidden, setRenameHidden] = useState(false);
 	// const [tempName, setTempName] = useState("");
@@ -49,6 +51,7 @@ const ChatAttendeeYou = (props) => {
 					onSubmit={() => {
 						setName(name);
 						setRenameHidden(!renameHidden);
+						// socketRef.emit("set yourname", name)
 						// setTempName("");
 					}}
 					className=" py-3"

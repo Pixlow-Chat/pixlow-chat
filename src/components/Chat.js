@@ -1,22 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
+import {socketRef} from "../context/socket"
 
 const Chat = (props) => {
 	const [yourID, setYourID] = useState();
+	const [yourNick, setYourNick] = useState("")
 	const [messages, setMessages] = useState([]);
 	const [message, setMessage] = useState("");
 
-	const socketRef = useRef();
+	const roomID = props.roomID;
 
 	useEffect(() => {
-		socketRef.current = io.connect("/");
-
-		socketRef.current.on("your id", (id) => {
+		// socketRef.current = io.connect("/");
+		
+		socketRef.emit("join room", roomID)
+		socketRef.on("your id", (id) => {
 			setYourID(id);
 		});
 
-		socketRef.current.on("message", (message) => {
-			console.log("here");
+
+		socketRef.on("message", (message) => {
+			// alert(JSON.stringify(message));
 			receivedMessage(message);
 		});
 	}, []);
@@ -27,12 +31,12 @@ const Chat = (props) => {
 
 	function sendMessage(e) {
 		e.preventDefault();
-		const messageObject = {
-			body: message,
-			id: yourID,
-		};
+		// const messageObject = {
+		// 	body: message,
+		// 	id: yourID,
+		// };
 		setMessage("");
-		socketRef.current.emit("send message", messageObject);
+		socketRef.emit("send message", {body: message, id: yourID, nick: yourNick, room: roomID});
 	}
 
 	function handleChange(e) {
@@ -50,7 +54,7 @@ const Chat = (props) => {
 								// style={{ backgroundColor: "#FF000020" }}
 								key={index}
 							>
-								{<p class="text-white PressStart2Play text-lg   pb-2">Me</p>}
+								{<p class="text-white PressStart2Play text-lg   pb-2">{message.nick}</p>}
 								{
 									<p class="text-white PressStart2Play text-md ">
 										{message.body}
@@ -67,7 +71,7 @@ const Chat = (props) => {
 							>
 								{
 									<p class="text-white PressStart2Play text-lg   pb-2">
-										Tyler:
+										{message.id}
 									</p>
 								}
 								{
