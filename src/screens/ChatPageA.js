@@ -8,23 +8,23 @@ import edit from "../assets/img/edit_no_background.png";
 import {socketRef} from "../context/socket"
 const ChatPageA = (props) => {
 	const roomID = "A"
-	const [attendees, setAttendees] = useState([
-		{ icon: link, name: "Me" },
-		{ icon: link, name: "Tyler" },
-	]);
+	const [attendees, setAttendees] = useState([]);
+	useEffect(() => {
+		socketRef.on("refresh attendees", userData => setAttendees(userData))
+	}, [])
 	// Room ID
 	const [roomName, setRoomName] = useState(`Room ${roomID}`);
 	const [tempRoomName, setTempRoomName] = useState("");
-	const [formHidden, setFormHidden] = useState(false);	
+	const [formHidden, setFormHidden] = useState(false);
 
 	const handleSubmit = () => {};
 	return (
 		<div className="h-screen w-screen overscroll-none">
 			<div id="chat-section" className="h-screen w-screen overscroll-none">
-				<div className="bg-primary mx-auto py-8 display-block ">
+				<div className="bg-primary mx-auto h-24 display-block z-50">
 					<div className="flex justify-between items-center">
-						<div className="flex flex-row flex-nowrap justify-start">
-							<p className="text-white text-xl PressStart2Play pl-24">
+						<div className="flex flex-row flex-nowrap justify-start items-center">
+							<p className="text-white text-xl PressStart2Play pl-24 mt-6">
 								{roomName}
 							</p>
 						</div>
@@ -108,8 +108,14 @@ const ChatPageA = (props) => {
 									Room Attendees
 								</text>
 								<div className="flex flex-col flex-nowrap overflow-y-scroll flex-1 justify-start">
-									<ChatAttendeeYou icon={link} name={"Me"} role={"host"} />
-									<ChatAttendee icon={link} name={"Tyler"} role={"member"} />
+									{/* <ChatAttendee icon={link} name={"Tyler"} role={"host"} /> */}
+									{attendees.map((item, index) => (
+										<div>
+											<h1 style={{color: 'white'}}>Name: {item.name}</h1>
+											<p style={{color: 'white'}}>id: {item.id}</p>
+											<p style={{color: 'white'}}>room: {item.room}</p><br></br>
+										</div>
+									))}
 								</div>
 							</div>
 						</div>

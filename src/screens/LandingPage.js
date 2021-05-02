@@ -41,13 +41,14 @@ const LandingPage = (props) => {
 							</div>
 						</div>
 						<div className=" md:w-6/12  sm:px-2 md:px-10 px-24 mx-auto">
-							<div className="md:float-right center">
+							{/* <div className="md:float-right center">
 								<Link to="/chat" class=" ">
 									<h3 className="text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
 										Make Room
 									</h3>
 								</Link>
-							</div>
+							</div> */}
+							
 						</div>
 					</div>
 					<form className="px-12 pt-12 mx-auto">
@@ -57,18 +58,7 @@ const LandingPage = (props) => {
 							</h3>
 						</label>
 						<div className="flex flex-col flex-nowrap flex-1 md:flex-row">
-							{/* <input
-								className="w-4/5 mx-auto md:w-auto md:flex-1 px-2 py-2 PressStart2Play my-2 md:py-4 md:mx-0"
-								type="text"
-								value={roomCode}
-								onChange={(e) => setRoomCode(e.target.value)}
-							/>
-
-							<input
-								type="submit"
-								value="Join!"
-								className="w-4/5 mx-auto flex-shrink bg-black px-6 py-4 PressStart2Play text-white my-2"
-							/> */}
+							
 							<button onClick={()=>handleSubmit("A")}>
 								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
 									A
