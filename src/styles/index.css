@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+
+@tailwind utilities;
+
+.PressStart2Play {
+	font-family: "Press+Start+Play", sans-serif;
+}
