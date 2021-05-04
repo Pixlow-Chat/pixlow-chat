@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { LandingPage, ChatPageA, ChatPageB } from "./screens";
+import { LandingPage, ChatPageA, ChatPageB, ChatPageC, ChatPageD} from "./screens";
 
 function App() {
 	return (
@@ -27,6 +27,8 @@ function App() {
 				<Route exact path="/" component={LandingPage} />
 				<Route path="/chatA" component={ChatPageA} />
 				<Route path="/chatB" component={ChatPageB} />
+				<Route path="/chatC" component={ChatPageC} />
+				<Route path="/chatD" component={ChatPageD} />
 			</Switch>
 		</Router>
 	);

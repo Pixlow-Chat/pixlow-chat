@@ -6,8 +6,8 @@ import ChatAttendeeYou from "../components/ChatAttendeeYou.js";
 import link from "../assets/img/link.png";
 import edit from "../assets/img/edit_no_background.png";
 import { socketRef } from "../context/socket";
-const ChatPageB = (props) => {
-  const roomID = "B";
+const ChatPageD = (props) => {
+  const roomID = "D";
   const [attendees, setAttendees] = useState([]);
   useEffect(() => {
     socketRef.on("refresh attendees", (userData) => setAttendees(userData));
@@ -128,4 +128,4 @@ const ChatPageB = (props) => {
     </div>
   );
 };
-export default ChatPageB;
+export default ChatPageD;

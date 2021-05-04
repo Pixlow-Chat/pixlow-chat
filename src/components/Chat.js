@@ -6,7 +6,16 @@ import link from "../assets/img/link.png";
 import edit from "../assets/img/edit_no_background.png";
 import make_room from "../assets/img/make_room.png";
 import chat_bubble from "../assets/img/chat_bubble.png";
+import person from "../assets/img/person.png";
 import rocket from "../assets/img/userIcons/rocket.png";
+import circlered from "../assets/img/circlered.png"
+import circleblue from "../assets/img/circleblue.png"
+import circlegreen from "../assets/img/circlegreen.png"
+import circlepink from "../assets/img/circlepink.png"
+import circlepurple from "../assets/img/circlepurple.png"
+import circleyellow from "../assets/img/circleyellow.png"
+import circlebrown from "../assets/img/circlebrown.png"
+import circlewhite from "../assets/img/circlewhite.png"
 
 const Chat = (props) => {
   const [yourID, setYourID] = useState();
@@ -63,7 +72,7 @@ const Chat = (props) => {
     if (yourName != "" && selectedIcon != null) {
       //   alert(yourName);
       //   alert(selectedIcon);
-      socketRef.emit("store user", { name: yourName, room: roomID });
+      socketRef.emit("store user", { name: yourName, room: roomID, icon: selectedIcon });
       setPopupVisible(false);
     }
   }
@@ -95,24 +104,41 @@ const Chat = (props) => {
         <br />
         <div className="flex flex-row flex-nowrap flex-1">
           <button
-            style={{ border: selectedIcon == link ? "3px solid orange" : null }}
-            onClick={() => {
-              setSelectedIcon(link);
-            }}
-            className="mx-4 p-2"
-          >
-            <img src={link} className="w-8 h-8 br-8" />
-          </button>
-          <button
-            style={{ border: selectedIcon == edit ? "3px solid orange" : null }}
-            onClick={() => {
-              setSelectedIcon(edit);
-            }}
-            className="mx-4 p-2"
-          >
-            <img src={edit} className="w-8 h-8 br-8" />
-          </button>
+            style={{ border: selectedIcon == circlered ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlered)}} className="mx-2 p-2">
+            <img src={circlered} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circleblue ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circleblue)}} className="mx-2 p-2">
+            <img src={circleblue} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circlegreen ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlegreen)}} className="mx-2 p-2">
+            <img src={circlegreen} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circlepink ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlepink)}} className="mx-2 p-2">
+            <img src={circlepink} className="w-8 h-8 br-8" /></button>
         </div>
+        <div className="flex flex-row flex-nowrap flex-1 mt-2">
+          <button
+            style={{ border: selectedIcon == circlepurple ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlepurple)}} className="mx-2 p-2">
+            <img src={circlepurple} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circleyellow ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circleyellow)}} className="mx-2 p-2">
+            <img src={circleyellow} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circlebrown ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlebrown)}} className="mx-2 p-2">
+            <img src={circlebrown} className="w-8 h-8 br-8" /></button>
+            <button
+            style={{ border: selectedIcon == circlewhite ? "3px solid orange" : null }}
+            onClick={() => {setSelectedIcon(circlewhite)}} className="mx-2 p-2">
+            <img src={circlewhite} className="w-8 h-8 br-8" /></button>
+        </div>
+        
         <br />
         <button
           onClick={handleSubmit}
@@ -134,10 +160,15 @@ const Chat = (props) => {
                 key={index}
               >
                 {
+                  <div className="flex flex-row">
+                    <img src={selectedIcon} className="w-6 h-6 br-6 mr-4" />
                   <p class="text-white PressStart2Play text-lg   pb-2">
                     {yourName}
                   </p>
+                  
+                  </div>
                 }
+               
                 {
                   <p class="text-white PressStart2Play text-md ">
                     {message.body}
@@ -147,10 +178,12 @@ const Chat = (props) => {
             );
           } else {
 			let nameShown = "";
+      let iconShown = "";
 			let i;
 			for (i = 0; i < attendees.length; i++) {
 				if(attendees[i].id == message.id){
 					nameShown = attendees[i].name
+          iconShown = attendees[i].icon
 				}
 			}
             return (
@@ -159,9 +192,13 @@ const Chat = (props) => {
                 // style={{ backgroundColor: "#FF000020" }}
                 key={index}
               >
-                <p class="text-white PressStart2Play text-lg   pb-2">
-				{nameShown}
-                </p>
+                <div className="flex flex-row">
+                    <img src={iconShown == "" ? person : iconShown} className="w-6 h-6 br-6 mr-4" />
+                  <p class="text-white PressStart2Play text-lg   pb-2">
+                    {nameShown == "" ? "(user disconnected)" : nameShown}
+                  </p>
+                  
+                  </div>
 
                 <p class="text-white PressStart2Play text-md  ">
                   {message.body}

@@ -14,7 +14,7 @@ const LandingPage = (props) => {
 	// const [roomCode, setRoomCode] = useState("");
 	const handleSubmit = (room) => {
 		// evt.preventDefault();
-		alert(`Joining Room ${room}`);
+		// alert(`Joining Room ${room}`);
 		props.history.push(`/chat${room}`)
 	};
 	return (
@@ -67,6 +67,16 @@ const LandingPage = (props) => {
 							<button onClick={()=>handleSubmit("B")}>
 								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
 									B
+								</h3>
+							</button>
+							<button onClick={()=>handleSubmit("C")}>
+								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+									C
+								</h3>
+							</button>
+							<button onClick={()=>handleSubmit("D")}>
+								<h3 className="m-3 text-center text-white bg-accent text-xl py-6 px-5 mb-2  md:text-2xl lg:text-3xl xl:text-4xl PressStart2Play">
+									D
 								</h3>
 							</button>
 						</div>
