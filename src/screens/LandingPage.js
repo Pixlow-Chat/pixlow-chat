@@ -95,7 +95,7 @@ const LandingPage = (props) => {
 						<div className="mx-auto px-12 w-1/2 text-center">
 							<br></br>
 							<p className="PressStart2Play text-white">
-								Create<br></br>Room
+								Join<br></br>Room
 							</p>
 						</div>
 					</div>
