@@ -119,9 +119,6 @@ const LandingPage = (props) => {
 					</div>
 				</div>
 			</div>
-			<a href="https://www.freepik.com/vectors/shapes">
-				Shapes vector created by starline - www.freepik.com
-			</a>
 		</div>
 	);
 };
