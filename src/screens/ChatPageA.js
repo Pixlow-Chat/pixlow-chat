@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Chat, ChatHeader } from "../components";
-import ChatAttendee from "../components/ChatAttendee.js";
-import ChatAttendeeYou from "../components/ChatAttendeeYou.js";
-import link from "../assets/img/link.png";
-import edit from "../assets/img/edit_no_background.png";
+import { Chat } from "../components";
+
 import { socketRef } from "../context/socket";
 const ChatPageA = (props) => {
   const roomID = "A";
@@ -12,11 +8,8 @@ const ChatPageA = (props) => {
   useEffect(() => {
     socketRef.on("refresh attendees", (userData) => setAttendees(userData));
   }, []);
-  // Room ID
-  const [roomName, setRoomName] = useState(`Room ${roomID}`);
-  const [tempRoomName, setTempRoomName] = useState("");
-  const [formHidden, setFormHidden] = useState(false);
 
+  const [roomName, setRoomName] = useState(`Room ${roomID}`);
 
   return (
     <div className="h-screen w-screen overscroll-none">
@@ -34,7 +27,6 @@ const ChatPageA = (props) => {
           <div className=" w-full h-full  flex flex-row flex-nowrap">
             <div className="h-full w-4/5">
               <div className="h-full flex flex-col flex-nowrap justify-end">
-                {/* Room ID */}
                 <Chat roomID={roomID}></Chat>
               </div>
             </div>
@@ -44,7 +36,6 @@ const ChatPageA = (props) => {
                   <div className="flex flex-row flex-nowrap justify-start">
                     <button
                       className="bg-primary-dark py-3 px-5 mx-1 over:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full"
-                      // Room ID
                       onClick={() => {
                         socketRef.emit("leave room", { roomID });
                         props.history.push("/");
@@ -64,7 +55,6 @@ const ChatPageA = (props) => {
                   Room Attendees ({attendees.length})
                 </text>
                 <div className="flex flex-col flex-nowrap overflow-y-scroll flex-1 justify-start">
-                  {/* <ChatAttendee icon={link} name={"Tyler"} role={"host"} /> */}
                   {attendees.map((item, index) => (
                     <div className="flex flex-row flex-nowrap justify-start align-middle my-2">
                       <img src={item.icon} className="w-8 h-8 mx-2" />
