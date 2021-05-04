@@ -90,7 +90,7 @@ const LandingPage = (props) => {
 					</h2>
 				</div>
 				<div className="mx-auto justify-center md:flex md:flex-row md:flex-wrap w-full">
-					<div classNam="w-1/3">
+					<div>
 						<img src={make_room} className="w-1/3 mx-auto" />
 						<div className="mx-auto px-12 w-1/2 text-center">
 							<br></br>
@@ -99,16 +99,7 @@ const LandingPage = (props) => {
 							</p>
 						</div>
 					</div>
-					<div classNam="w-1/3">
-						<img src={link} className="w-1/3 mx-auto" />
-						<div className="mx-auto px-12 w-1/2 text-center">
-							<br></br>
-							<p className="PressStart2Play text-white">
-								Share<br></br>Link
-							</p>
-						</div>
-					</div>
-					<div classNam="w-1/3">
+					<div>
 						<img src={chat_bubble} className="w-1/3 mx-auto" />
 						<div className="mx-auto px-12 w-1/2 text-center">
 							<br></br>
@@ -117,6 +108,7 @@ const LandingPage = (props) => {
 							</p>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
