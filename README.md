@@ -19,3 +19,6 @@ To use PixlowChat, you must clone this repository and run the frontend locally. 
 
 4. Start the development server<br>
    `npm start`
+   
+## Demo
+https://youtu.be/HwSrTc4rA9A
