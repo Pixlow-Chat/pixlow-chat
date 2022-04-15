@@ -1,3 +1,7 @@
+//useRef, io, link, edit, make_room, chat_bubble, and rocket are defined but never used
+//Unknown property 'class' found, use 'className' instead for some css elements
+//Suggestion: imgs should have an alt prop- such as meaningful text
+
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { socketRef } from "../context/socket";
@@ -69,7 +73,8 @@ const Chat = (props) => {
     setMessage(e.target.value);
   }
   function handleSubmit() {
-    if (yourName != "" && selectedIcon != null) {
+    //changed yourName to check for type
+    if (yourName !== "" && selectedIcon != null) {
       //   alert(yourName);
       //   alert(selectedIcon);
       socketRef.emit("store user", { name: yourName, room: roomID, icon: selectedIcon });
@@ -104,41 +109,41 @@ const Chat = (props) => {
         <br />
         <div className="flex flex-row flex-nowrap flex-1">
           <button
-            style={{ border: selectedIcon == circlered ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlered ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlered)}} className="mx-2 p-2">
             <img src={circlered} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circleblue ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circleblue ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circleblue)}} className="mx-2 p-2">
             <img src={circleblue} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circlegreen ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlegreen ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlegreen)}} className="mx-2 p-2">
             <img src={circlegreen} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circlepink ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlepink ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlepink)}} className="mx-2 p-2">
             <img src={circlepink} className="w-8 h-8 br-8" /></button>
         </div>
         <div className="flex flex-row flex-nowrap flex-1 mt-2">
           <button
-            style={{ border: selectedIcon == circlepurple ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlepurple ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlepurple)}} className="mx-2 p-2">
             <img src={circlepurple} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circleyellow ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circleyellow ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circleyellow)}} className="mx-2 p-2">
             <img src={circleyellow} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circlebrown ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlebrown ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlebrown)}} className="mx-2 p-2">
             <img src={circlebrown} className="w-8 h-8 br-8" /></button>
             <button
-            style={{ border: selectedIcon == circlewhite ? "3px solid orange" : null }}
+            style={{ border: selectedIcon === circlewhite ? "3px solid orange" : null }}
             onClick={() => {setSelectedIcon(circlewhite)}} className="mx-2 p-2">
             <img src={circlewhite} className="w-8 h-8 br-8" /></button>
         </div>
-        
+
         <br />
         <button
           onClick={handleSubmit}
@@ -152,7 +157,7 @@ const Chat = (props) => {
     <div>
       <div className="overflow-y-scroll">
         {messages.map((message, index) => {
-          if (message.id == yourID) {
+          if (message.id === yourID) {
             return (
               <div
                 className="mx-12 my-6 px-4 py-2 bg-accent max-w-max"
@@ -165,10 +170,10 @@ const Chat = (props) => {
                   <p class="text-white PressStart2Play text-lg   pb-2">
                     {yourName}
                   </p>
-                  
+
                   </div>
                 }
-               
+
                 {
                   <p class="text-white PressStart2Play text-md ">
                     {message.body}
@@ -181,7 +186,7 @@ const Chat = (props) => {
       let iconShown = "";
 			let i;
 			for (i = 0; i < attendees.length; i++) {
-				if(attendees[i].id == message.id){
+				if(attendees[i].id === message.id){
 					nameShown = attendees[i].name
           iconShown = attendees[i].icon
 				}
@@ -193,11 +198,11 @@ const Chat = (props) => {
                 key={index}
               >
                 <div className="flex flex-row">
-                    <img src={iconShown == "" ? person : iconShown} className="w-6 h-6 br-6 mr-4" />
+                    <img src={iconShown === "" ? person : iconShown} className="w-6 h-6 br-6 mr-4" />
                   <p class="text-white PressStart2Play text-lg   pb-2">
-                    {nameShown == "" ? "(user disconnected)" : nameShown}
+                    {nameShown === "" ? "(user disconnected)" : nameShown}
                   </p>
-                  
+
                   </div>
 
                 <p class="text-white PressStart2Play text-md  ">
