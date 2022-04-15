@@ -1,8 +1,6 @@
-//useRef, io, link, edit, make_room, chat_bubble, and rocket are defined but never used
-//Unknown property 'class' found, use 'className' instead for some css elements
 //Suggestion: imgs should have an alt prop- such as meaningful text
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import { socketRef } from "../context/socket";
 
@@ -73,7 +71,6 @@ const Chat = (props) => {
     setMessage(e.target.value);
   }
   function handleSubmit() {
-    //changed yourName to check for type
     if (yourName !== "" && selectedIcon != null) {
       //   alert(yourName);
       //   alert(selectedIcon);
@@ -167,7 +164,7 @@ const Chat = (props) => {
                 {
                   <div className="flex flex-row">
                     <img src={selectedIcon} className="w-6 h-6 br-6 mr-4" />
-                  <p class="text-white PressStart2Play text-lg   pb-2">
+                  <p className="text-white PressStart2Play text-lg   pb-2">
                     {yourName}
                   </p>
 
@@ -175,7 +172,7 @@ const Chat = (props) => {
                 }
 
                 {
-                  <p class="text-white PressStart2Play text-md ">
+                  <p className="text-white PressStart2Play text-md ">
                     {message.body}
                   </p>
                 }
@@ -199,13 +196,13 @@ const Chat = (props) => {
               >
                 <div className="flex flex-row">
                     <img src={iconShown === "" ? person : iconShown} className="w-6 h-6 br-6 mr-4" />
-                  <p class="text-white PressStart2Play text-lg   pb-2">
+                  <p className="text-white PressStart2Play text-lg   pb-2">
                     {nameShown === "" ? "(user disconnected)" : nameShown}
                   </p>
 
                   </div>
 
-                <p class="text-white PressStart2Play text-md  ">
+                <p className="text-white PressStart2Play text-md  ">
                   {message.body}
                 </p>
               </div>
@@ -219,7 +216,7 @@ const Chat = (props) => {
             value={message}
             onChange={handleChange}
             placeholder={"Say something..."}
-            class="flex-1 border-3"
+            className="flex-1 border-3"
           ></textarea>
           <button className="bg-primary">
             <text className="text-white px-6 py-10 text-xl PressStart2Play">
