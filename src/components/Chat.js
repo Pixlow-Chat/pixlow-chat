@@ -1,15 +1,9 @@
 //Suggestion: imgs should have an alt prop- such as meaningful text
 
 import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
 import { socketRef } from "../context/socket";
 
-import link from "../assets/img/link.png";
-import edit from "../assets/img/edit_no_background.png";
-import make_room from "../assets/img/make_room.png";
-import chat_bubble from "../assets/img/chat_bubble.png";
 import person from "../assets/img/person.png";
-import rocket from "../assets/img/userIcons/rocket.png";
 import circlered from "../assets/img/circlered.png"
 import circleblue from "../assets/img/circleblue.png"
 import circlegreen from "../assets/img/circlegreen.png"
